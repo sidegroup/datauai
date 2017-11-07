@@ -1,0 +1,16 @@
+<div role="main">
+  <div class="container">
+    <div class="row" style="text-align: center;">
+        <h1 class="page-heading">Bem Vindo ao #datauai</h1>
+        <p style="font-size: 18px;">O portal de dados abertos do IFPB</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+        {% snippet 'group/snippets/group_list.html', groups = h.get_featured_groups(5) %}
+    </div>
+  </div>
+</div>
+
+

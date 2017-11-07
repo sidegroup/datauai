@@ -1,0 +1,16 @@
+body {
+  background: #034811;
+}
+
+/* Header */
+.account-masthead{
+	background: #00420c;
+}
+.masthead{
+	background: radial-gradient(ellipse at center, #19882c 1%, #025310 100%);
+}
+
+/* Footer */
+.site-footer{
+	background: #034811;
+}

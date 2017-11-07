@@ -1,0 +1,18 @@
+{% ckan_extends %}
+
+{% block header_account_notlogged %}
+  {# Deixar so a opção de login #}
+  <li>{% link_for _('Log in'), controller='user', action='login' %}</li>
+{% endblock %}
+
+{% block header_site_navigation_tabs %}
+  {#Menu#}
+  {{ 
+    h.build_nav_main(
+      ('search', _('Dados')),
+      ('group_index', _('Grupos')),
+      ('about', _('Aplicativos')),
+      ('about', _('Sobre'))
+    ) 
+  }}
+{% endblock %}
