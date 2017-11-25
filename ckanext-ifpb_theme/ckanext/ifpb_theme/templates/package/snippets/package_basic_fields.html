@@ -1,0 +1,10 @@
+{% ckan_extends %}
+
+{% block package_basic_fields_org %}
+	{% if  h.count_organizations() > 1 %}
+		{{ super() }}
+	{% else %}
+		{% set organizations = h.organizations_available('create_dataset') %}
+		<input type="hidden" name="owner_org" value="{{organizations[0].id}}">
+	{% endif %}
+{% endblock %}
