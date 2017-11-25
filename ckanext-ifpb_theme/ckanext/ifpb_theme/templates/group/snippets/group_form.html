@@ -1,0 +1,29 @@
+{% ckan_extends %}
+
+{% block basic_fields %}
+	{% set attrs = {'data-module': 'slug-preview-target'} %}
+    {{ form.input('title', label=_('Name'), id='field-name', placeholder=_('My Group'), value=data.title, error=errors.title, classes=['control-full'], attrs=attrs) }}
+
+    {# Perhaps these should be moved into the controller? #}
+    {% set prefix = h.url_for(controller='group', action='read', id='') %}
+    {% set domain = h.url_for(controller='group', action='read', id='', qualified=true) %}
+    {% set domain = domain|replace("http://", "")|replace("https://", "") %}
+    {% set attrs = {'data-module': 'slug-preview-slug', 'data-module-prefix': domain, 'data-module-placeholder': '<group>'} %}
+
+    {{ form.prepend('name', label=_('URL'), prepend=prefix, id='field-url', placeholder=_('my-group'), value=data.name, error=errors.name, attrs=attrs, is_required=true) }}
+
+    {{ form.markdown('description', label=_('Description'), id='field-description', placeholder=_('A little information about my group...'), value=data.description, error=errors.description) }}
+
+    {{ form.select_update(_("image_url"), id="field-image-url", label="Imagem", 
+    	options=[{'name':'Documento', 'value':'http://192.168.33.10:5000/base/images/documento.png'},
+    			 {'name':'Ensino', 'value':'http://192.168.33.10:5000/base/images/ensino.png'},
+    			 {'name':'Extensão', 'value':'http://192.168.33.10:5000/base/images/extensao.jpg'},
+    			 {'name':'Inovação', 'value':'http://192.168.33.10:5000/base/images/inovacao.png'},
+    			 {'name':'Materiais', 'value':'http://192.168.33.10:5000/base/images/materiais.png'},
+    			 {'name':'Pesquisa', 'value':'http://192.168.33.10:5000/base/images/pesquisa.png'},
+    			 {'name':'Pessoas', 'value':'http://192.168.33.10:5000/base/images/pessoas.png'}],
+    	selected=data.image_url, 
+    	error=errors.imagem)
+    }}
+
+{% endblock %}
