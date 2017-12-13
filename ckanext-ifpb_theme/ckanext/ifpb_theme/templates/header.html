@@ -1,18 +1,50 @@
 {% ckan_extends %}
 
-{% block header_account_notlogged %}
-  {# Deixar so a opção de login #}
-  <li>{% link_for _('Log in'), controller='user', action='login' %}</li>
+{% block header_account %}
+  {# Condição para ocultar o header de login #}
+
+  {% if c.userobj %}
+    {{super()}}
+  {% endif %}
 {% endblock %}
 
-{% block header_site_navigation_tabs %}
-  {#Menu#}
-  {{ 
-    h.build_nav_main(
-      ('search', _('Dados')),
-      ('group_index', _('Grupos')),
-      ('about', _('Aplicativos')),
-      ('about', _('Sobre'))
-    ) 
-  }}
+{% block header_logo %}
+  {% if g.site_logo %}
+    <div style="padding-bottom: 15px;">
+      <a class="logo" href="{{ h.url_for('home') }}"><img src="{{ h.url_for_static_or_external(g.site_logo) }}" alt="{{ g.site_title }}" title="{{ g.site_title }}" width="180" /></a>
+    {% else %}
+      <h1>
+        <a href="{{ h.url_for('home') }}">{{ g.site_title }}</a>
+      </h1>
+      {% if g.site_description %}<h2>{{ g.site_description }}</h2>{% endif %}
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block header_site_navigation %}
+  <nav style="margin-top: 20px;" class="section navigation">
+    <ul class="nav nav-pills">
+      {% block header_site_navigation_tabs %}
+        {#Menu#}
+        {{ 
+          h.build_nav_main(
+            ('search', _('Dados')),
+            ('group_index', _('Grupos')),
+            ('about', _('Aplicativos')),
+            ('about', _('Sobre'))
+          ) 
+        }}
+      {% endblock %}
+    </ul>
+  </nav>
+{% endblock %}
+
+{% block header_site_search %}
+  <form style="margin-top: 20px;" class="section site-search simple-input" action="{% url_for controller='package', action='search' %}" method="get">
+    <div class="field">
+      <label for="field-sitewide-search">{% block header_site_search_label %}{{ _('Search Datasets') }}{% endblock %}</label>
+      <input id="field-sitewide-search" type="text" name="q" placeholder="{{ _('Search') }}" />
+      <button class="btn-search" type="submit"><i class="fa fa-search"></i></button>
+    </div>
+  </form>
 {% endblock %}
