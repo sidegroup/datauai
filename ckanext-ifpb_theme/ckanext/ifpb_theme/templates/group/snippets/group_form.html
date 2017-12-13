@@ -14,6 +14,14 @@
 
     {{ form.markdown('description', label=_('Description'), id='field-description', placeholder=_('A little information about my group...'), value=data.description, error=errors.description) }}
 
+    {% set is_upload = data.image_url and not data.image_url.startswith('http') %}
+    {% set is_url = data.image_url and data.image_url.startswith('http') %}
+
+    {{ form.image_upload(data, errors, is_upload_enabled=h.uploads_enabled(), is_url=is_url, is_upload=is_upload) }}
+
+    {#
+        Select para add uma imagem ao grupo - Manual
+
     {{ form.select_update(_("image_url"), id="field-image-url", label="Imagem", 
     	options=[{'name':'Documento', 'value':'http://192.168.33.10:5000/base/images/documento.png'},
     			 {'name':'Ensino', 'value':'http://192.168.33.10:5000/base/images/ensino.png'},
@@ -25,5 +33,6 @@
     	selected=data.image_url, 
     	error=errors.imagem)
     }}
+    #}
 
 {% endblock %}
