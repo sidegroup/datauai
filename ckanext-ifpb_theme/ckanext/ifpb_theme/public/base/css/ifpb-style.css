@@ -1,16 +1,25 @@
 body {
-  background: #3FA14C;
+  background: #003237;
 }
 
 /* Header */
 .account-masthead{
-	background: #008000;
+	background: #000;
 }
 .masthead{
-	background: #3FA14C;
+	background: #003237;
 }
 
 /* Footer */
 .site-footer{
-	background: #3FA14C;
+	background: #003237;
+}
+
+.media-item-ifpb {
+  width: 100px !important;
+  background-color: white;
+}
+
+.font-quicksand{
+	font-family: Quicksand;
 }
