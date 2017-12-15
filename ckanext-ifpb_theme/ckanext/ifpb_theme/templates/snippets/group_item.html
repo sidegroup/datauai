@@ -1,14 +1,18 @@
 {% set type = group.type or 'group' %}
 {% set url = h.url_for(type ~ '_read', action='read', id=group.name) %}
 {% block item %}
-  <li class="media-item media-item-ifpb">
+  <li class="media-item _media-item">
     {% block item_inner %}
       {% block image %}
         <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.name }}" class="media-image">
       {% endblock %}
+      
+      {% block group_item_header_title %}
+        <h3 class="media-heading">{{ group.title or group.name }}</h3>
+      {% endblock %}
 
       {% block link %}
-        <a href="{{ url }}" title="{{ _('{name}').format(name=h.get_translated(group, 'title') or group.display_name) }}" class="media-view">
+        <a href="{{ url }}" class="media-view">
           <span>{{ _('{name}').format(name=h.get_translated(group, 'title') or group.display_name) }}</span>
         </a>
       {% endblock %}
