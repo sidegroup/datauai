@@ -15,11 +15,27 @@ body {
 	background: #003237;
 }
 
-.media-item-ifpb {
-  width: 100px !important;
-  background-color: white;
+.font-quicksand{
+	font-family: Quicksand !important;
 }
 
-.font-quicksand{
-	font-family: Quicksand;
+/* Tamanho default do corpo central */
+[role=main] {
+  min-height: 500px !important;
+}
+
+._media-item {
+  width: 100px !important;
+}
+
+.media-image-group{
+	width: 60% !important;
+}
+
+.media-item {
+	text-align: center;
+}
+
+._media-grid{	
+	padding-left: 50px;
 }
