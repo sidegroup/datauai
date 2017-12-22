@@ -1,0 +1,15 @@
+{% extends "app/edit_base.html" %}
+
+{% block page_primary_action %}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li>{{ h.nav_link(_('Apps'), controller='ckanext.ifpb_theme.controllers.app:AppController', action='index') }}</li>
+  <li class="active">{% block breadcrumb_link %}{{ h.nav_link(_('Add um App'), controller='ckanext.ifpb_theme.controllers.app:AppController', action='new') }}{% endblock %}</li>
+{% endblock %}
+
+{% block primary_content_inner %}
+  <h1 class="{% block page_heading_class %}page-heading{% endblock %}">{% block page_heading %}{{ _('App Form') }}{% endblock %}</h1>
+  {% block form %}
+    {{ c.form | safe }}
+  {% endblock %}
+{% endblock %}

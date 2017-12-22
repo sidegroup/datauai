@@ -1,0 +1,33 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Aplicativo') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Aplicativos'), controller='ckanext.ifpb_theme.controllers.app:AppController', action='show' %}</li>
+{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{% block page_primary_action %}
+  {% if h.check_access('app_create') %}
+    {% link_for _('Adicionar Aplicativo'), controller='ckanext.ifpb_theme.controllers.app:AppController', action='new', class_='btn btn-primary', icon='plus-square' %}
+  {% endif %}
+{% endblock %}
+
+{% block primary_content_inner %}
+  <h1 class="hide-heading">{{ _('Aplicativos') }}</h1>
+  
+  {% block groups_list %}
+    {% if lista %}
+      {% snippet "app/snippets/app_list.html", apps=lista %}
+    {% else %}
+      <p class="empty">
+        {{ _('Nenhum aplicativo encontrado') }}.
+      </p>
+    {% endif %}
+  {% endblock %}
+{% endblock %}
+
+{% block secondary_content %}
+  {% snippet "app/snippets/helper.html" %}
+{% endblock %}

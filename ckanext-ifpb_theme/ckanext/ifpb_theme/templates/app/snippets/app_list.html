@@ -1,0 +1,7 @@
+{% block group_list %}
+<ul class="media-grid" data-module="media-grid">
+	{% for app in apps %}
+		{% snippet "app/snippets/app_item.html", app=app %}
+	{% endfor %}
+</ul>
+{% endblock %}
