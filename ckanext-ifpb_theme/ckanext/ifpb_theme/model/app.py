@@ -40,8 +40,6 @@ class App(vdm.sqlalchemy.StatefulObjectMixin,
         '''Returns a app object referenced by its id or name.'''
         query = meta.Session.query(cls).filter(cls.id == reference)
         app = query.first()
-        if app is None:
-            app = cls.by_name(reference)
         return app
 
     @classmethod
