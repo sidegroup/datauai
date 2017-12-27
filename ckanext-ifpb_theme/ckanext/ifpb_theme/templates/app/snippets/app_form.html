@@ -1,0 +1,28 @@
+{% import 'macros/form.html' as form %}
+
+<form id="app-edit" class="dataset-form form-horizontal" method="post" data-module="basic-form" enctype="multipart/form-data">
+  {% block error_summary %}
+    {{ form.errors(error_summary) }}
+  {% endblock %}
+
+  {% block basic_fields %}
+    {% set attrs = {'data-module': 'slug-preview-target'} %}
+    {{ form.input('name', label=_('Nome'), id='field-name', placeholder=_('Meu App'), value=data.name, error=errors.name, classes=['control-full'], attrs=attrs, is_required=true) }}
+
+    {{ form.input('image_url', label=_('URL da Imagem'), id='field-image_url', placeholder=_('Ex: www.endereço.com.br/imagem.jpg'), value=data.image_url, error=errors.image_url, classes=['control-full'], attrs=attrs, is_required=true) }}
+
+    {{ form.textarea('description', id='field-description', label=_('Descrição'), placeholder=_('Um pouco de informação sobre o meu app...'), value=data.description, error=errors.description) }}
+
+  {% endblock %}
+
+  {{ form.required_message() }}
+
+  <div class="form-actions">
+    {% block delete_button %}
+      {% if h.check_access('app_delete', {'id': data.id})  %}
+        <a class="btn btn-danger pull-left" href="{% url_for controller='ckanext.ifpb_theme.controllers.app:AppController', action='delete', id=data.id %}" data-module="confirm-action" data-module-content="{{ _('Você tem certeza de que deseja apagar este App?') }}">{% block delete_button_text %}{{ _('Delete') }}{% endblock %}</a>
+      {% endif %}
+    {% endblock %}
+    <button class="btn btn-primary" name="save" type="submit">{% block save_text %}{{ _('Criar App') }}{% endblock %}</button>
+  </div>
+</form>
