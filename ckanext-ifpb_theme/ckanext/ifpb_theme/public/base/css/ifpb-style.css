@@ -25,11 +25,15 @@ body {
 }
 
 ._media-item {
-  width: 100px !important;
+  width: auto !important;
 }
 
 .media-image-group{
-	width: 60% !important;
+	width: 50% !important;
+}
+
+.media-image-home img{
+	width: 90px !important;
 }
 
 .media-item {
@@ -37,5 +41,5 @@ body {
 }
 
 ._media-grid{	
-	padding-left: 50px;
+	padding-left: 70px;
 }
