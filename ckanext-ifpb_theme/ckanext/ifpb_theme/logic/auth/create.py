@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 import ckan.logic as logic
 import ckan.authz as authz
 import ckan.logic.auth as logic_auth
@@ -12,4 +14,4 @@ def app_create(context, data_dict=None):
     if user and authz.check_config_permission('user_create_apps'):
         return {'success': True}
     return {'success': False,
-            'msg': _('User %s not authorized to create aplicativos') % user}
+            'msg': _('Usuário %s não autorizado para criar um app') % user}
