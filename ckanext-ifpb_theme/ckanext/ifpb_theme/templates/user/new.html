@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+{% block breadcrumb_content %}
+	{% if not c.userobj %}
+		{{ h.redirect_to('/') }}
+	{% endif %}
+
+	{{ super() }}
+{% endblock %}
