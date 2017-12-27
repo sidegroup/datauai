@@ -63,3 +63,15 @@ def app_list(context, data_dict = {}):
 
 	lista = query.all()
 	return lista
+
+def app_show(context, data_dict = {}):
+	m = context['model']
+	app_id = data_dict.get('id')
+
+	query = model.Session.query(m.App).filter_by(id = app_id)
+	app = query.first()
+
+	if app is None:
+		raise NotFound(u'App não encontrado.')
+
+	return app
