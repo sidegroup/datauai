@@ -11,7 +11,7 @@
     <p>{{ h.markdown_extract(app.description, extract_length=80) }}</p>
   {% endblock %}
   {% block link %}
-  <a href="{{ url }}" title="{{ app.name }}" class="media-view">
+  <a href="/app/edit/{{app.id}}" title="{{ app.name }}" class="media-view">
     <span>{{ app.name }}</span>
   </a>
   {% endblock %}
