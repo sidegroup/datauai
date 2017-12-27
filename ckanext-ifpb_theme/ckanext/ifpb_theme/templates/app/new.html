@@ -1,8 +1,19 @@
-<h1>Novo App</h1>
+{% extends "app/base_form_page.html" %}
 
-<form method="post" action="/app/new">
-	Name: <input type="text" name="name"><br>
-	Descrição: <input type="text" name="description"><br>
-	Imagem URL: <input type="text" name="image_url"><br>
-	<input type="submit" name="save">
-</form>
+{% block subtitle %}{{ _('Criar um App') }}{% endblock %}
+
+{% block breadcrumb_link %}
+	{% if action == "edit" %}
+		{{ h.nav_link(data.name, controller='ckanext.ifpb_theme.controllers.app:AppController', action='edit', id=data.id) }}
+	{%else%}
+		{{ h.nav_link(_('Criar um App'), controller='ckanext.ifpb_theme.controllers.app:AppController', action='new') }}
+	{%endif%}
+{% endblock %}
+
+{% block page_heading %}{{ _('Criar um App') }}{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{% block secondary_content %}
+  {% snippet "app/snippets/helper.html" %}
+{% endblock %}
