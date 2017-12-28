@@ -14,4 +14,4 @@ def app_create(context, data_dict=None):
     if user and authz.check_config_permission('user_create_apps'):
         return {'success': True}
     return {'success': False,
-            'msg': _('Usuário %s não autorizado para criar um app') % user}
+            'msg': _(u'Usuário %s não autorizado para criar um app') % user}

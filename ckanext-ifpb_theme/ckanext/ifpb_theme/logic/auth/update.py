@@ -13,4 +13,4 @@ def app_update(context, data_dict=None):
     if user and authz.check_config_permission('user_update_apps'):
         return {'success': True}
     return {'success': False,
-            'msg': _('Usuário %s não autorizado para atualizar o app') % user}
+            'msg': _(u'Usuário %s não autorizado para atualizar o app') % user}
