@@ -17,6 +17,7 @@ app_table = Table('app', meta.metadata,
                     Column('name', types.UnicodeText),
                     Column('description', types.UnicodeText),
                     Column('image_url', types.UnicodeText),
+                    Column('app_url', types.UnicodeText),
                     Column('created', types.DateTime,
                            default=datetime.datetime.now))
 

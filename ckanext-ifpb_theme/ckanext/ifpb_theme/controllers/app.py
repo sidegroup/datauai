@@ -37,6 +37,7 @@ def app_schema():
 		'name': [not_empty, unicode],
 		'description': [ignore_missing, unicode],
 		'image_url': [not_empty, unicode],
+		'app_url': [not_empty, unicode],
 		'created': [ignore]
     }
 	return schema
@@ -128,7 +129,7 @@ class AppController(BaseController):
 		try:
 			check_access('app_update', context)
 		except NotAuthorized:
-			abort(403, _(u'Usuário %r não autorizado para excluir %s') % (c.user, id))
+			abort(403, _(u'Usuário %r não autorizado para editar %s') % (c.user, id))
 
 		errors = errors or {}
 		vars = {'data': data, 'errors': errors,

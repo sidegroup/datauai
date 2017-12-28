@@ -11,6 +11,8 @@
 
     {{ form.input('image_url', label=_('URL da Imagem'), id='field-image_url', placeholder=_('Ex: www.endereço.com.br/imagem.jpg'), value=data.image_url, error=errors.image_url, classes=['control-full'], attrs=attrs, is_required=true) }}
 
+    {{ form.input('app_url', label=_('URL do App'), id='field-app_url', placeholder=_('Ex: www.endereço-do-app.com.br'), value=data.app_url, error=errors.app_url, classes=['control-full'], attrs=attrs, is_required=true) }}
+
     {{ form.textarea('description', id='field-description', label=_('Descrição'), placeholder=_('Um pouco de informação sobre o meu app...'), value=data.description, error=errors.description) }}
 
   {% endblock %}
