@@ -1,20 +1,20 @@
 {% block item %}
 <li class="media-item">
   {% block item_inner %}
-  {% block image %}
-    <img src="{{ app.image_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ app.name }}" class="media-image media-image-group">
-  {% endblock %}
-  {% block title %}
-    <h3 class="media-heading">{{ app.name }}</h3>
-  {% endblock %}
-  {% block description %}
-    <p>{{ h.markdown_extract(app.description, extract_length=80) }}</p>
-  {% endblock %}
-  {% block link %}
-  <a href="/app/edit/{{app.id}}" title="{{ app.name }}" class="media-view">
-    <span>{{ app.name }}</span>
-  </a>
-  {% endblock %}
+    {% block image %}
+      <a href="{{app.app_url}}" title="Ir para o App {{app.name}}"><img src="{{ app.image_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ app.name }}" class="media-image media-image-group"></a>
+    {% endblock %}
+    {% block title %}
+      <h3 class="media-heading">{{ app.name }}</h3>
+    {% endblock %}
+    {% block description %}
+      <p>{{ h.markdown_extract(app.description, extract_length=80) }}</p>
+    {% endblock %}
+    {% block edit %}
+      {% if c.userobj %}
+        <a class="btn btn-primary" href="/app/edit/{{app.id}}" >{{ _('Editar') }}</a>
+      {% endif %}
+    {% endblock %}
   {% endblock %}
 </li>
 {% endblock %}
