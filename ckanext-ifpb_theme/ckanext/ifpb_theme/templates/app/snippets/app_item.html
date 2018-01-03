@@ -2,7 +2,7 @@
 <li class="media-item">
   {% block item_inner %}
     {% block image %}
-      <a href="{{app.app_url}}" title="Ir para o App {{app.name}}"><img src="{{ app.image_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ app.name }}" class="media-image media-image-group"></a>
+      <a href="{{app.app_url}}" target="_blank" title="Ir para o App {{app.name}}"><img src="{{ app.image_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ app.name }}" class="media-image media-image-group"></a>
     {% endblock %}
     {% block title %}
       <h3 class="media-heading">{{ app.name }}</h3>
