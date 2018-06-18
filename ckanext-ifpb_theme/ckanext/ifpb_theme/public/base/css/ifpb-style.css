@@ -43,3 +43,11 @@ body {
 ._media-grid{	
 	padding-left: 70px;
 }
+
+.stats{
+	margin-top: 100px;
+}
+
+.dataset-heading a{
+	color: #003237;
+}
