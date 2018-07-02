@@ -40,6 +40,10 @@ body {
 	text-align: center;
 }
 
-._media-grid{	
+._media-grid{
 	padding-left: 70px;
+}
+
+.code-block{
+  margin-left: 40px;
 }
