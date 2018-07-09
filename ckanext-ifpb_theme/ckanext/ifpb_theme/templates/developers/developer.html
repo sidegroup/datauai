@@ -1,0 +1,24 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Developers') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">Developers</li>
+{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{% block page_primary_action %}
+
+    {% link_for _('Api do portal DataUAI'), controller='ckanext.ifpb_theme.controllers.apidoc:ApiController', action='show', class_='btn btn-primary' %}
+    {% link_for _('Api dos Datasets'), controller='ckanext.ifpb_theme.controllers.apidoc:ApiController', action='turma', class_='btn btn-primary' %}
+{% endblock %}
+
+{% block primary_content_inner %}
+  <h1 class="hide-heading">{{ _('Aplicativos') }}</h1>
+
+{% endblock %}
+
+{% block secondary_content %}
+  {% snippet "app/snippets/helper.html" %}
+{% endblock %}

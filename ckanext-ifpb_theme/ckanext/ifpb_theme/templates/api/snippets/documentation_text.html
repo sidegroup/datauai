@@ -1,0 +1,195 @@
+{% trans %}
+<p align="justify">
+   Possibilita obtenção de dados sobre este portal de dados abertos no formato de Json com três chaves.
+</p>
+<ul>
+   <li><em>sucess:</em> Retorna um boolean <em>true</em> ou <em>false</em></li>
+   <li><em>result:</em> Os dados resultantes da requisição</li>
+   <li><em>help:</em> Uma string de documentação para a função que você chamou</li>
+</ul>
+<h3>/group_list</h3>
+<p align="justify">
+   Retorna uma lista dos nomes dos grupos do site.<br>
+   Parametros:
+</p>
+<ul>
+   <li><em>order_by(string)</em>o campo para ordenar a lista deve ser 'name' ou 'packages'
+      (opcional)
+   </li>
+   <li><em>limit(int)</em>se fornecido, a lista de grupos será dividida em páginas de no máximo
+      um limite de grupos por página e somente uma página será retornada por vez (opcional)
+   </li>
+   <li><em>groups (list of strings)</em>uma lista de nomes dos grupos a serem retornados, se
+      forem fornecidos apenas grupos cujos nomes estejam nesta lista, serão retornados (opcional)
+   </li>
+</ul>
+<h4>Listar todos os grupos</h4>
+<p align="justify">
+   get http://demo.ckan.org/api/3/action/group_list<br>
+</p>
+<div class="code-block">
+   <code>result{ <br>
+   0:	"acessibilidade" <br>
+   1:	"administração"<br>
+   2:	"educacao"<br>
+   3:	"meio-ambiente"<br>
+   4: "mobilidade"<br>
+   5:	"saude"<br>
+   ...}<br></code>
+</div>
+<p>return type: list of strings</p>
+<h3>/organization_list</h3>
+<p align="justify">
+   Retorna uma lista dos nomes das organizações do site.<br>
+   Parametros:
+</p>
+<ul>
+   <li><em>order_by(string)</em>o campo para ordenar a lista deve ser 'name' ou 'packages'
+      (opcional)
+   </li>
+   <li><em>limit(int)</em>se fornecido, a lista de grupos será dividida em páginas de no máximo
+      um limite de grupos por página e somente uma página será retornada por vez (opcional)
+   </li>
+   <li><em>organizations (list of strings)</em>uma lista de nomes das organizações a serem retornados, se
+      forem fornecidos apenas organizações cujos nomes estejam nesta lista, serão retornados (opcional)
+   </li>
+</ul>
+<h4>Listar todos os grupos</h4>
+<p align="justify">
+   get http://demo.ckan.org/api/3/action/organization_list<br>
+</p>
+<div class="code-block">
+   <code>result{ <br>
+   0:	"UA1" <br>
+   1:	"UA2"<br>
+   2:	"SIDE"<br>
+   3:	"Reitoria"<br>
+   ...}<br></code>
+</div>
+<p>return type: list of strings</p>
+<h3>/tag_list</h3>
+<p align="justify">
+   Retorna uma lista das tags do portal<br>
+   Parametros:
+</p>
+<ul>
+   <li><em>query(string)</em>Uma consulta de nome de marca para pesquisar, se forem
+      fornecidas apenas as tags cujos nomes contenham essa string serão retornadas (opcional)
+   </li>
+   <li><em>vocabulary_id (string)</em>O id ou o nome de um vocabulário, se somente as tags que pertencem a
+      este vocabulário forem retornadas (opcional)
+   </li>
+   <li><em>all_fields (bool)</em>Retornar dicionários de tags completos em vez de apenas nomes
+      (opcional, padrão: False)
+   </li>
+</ul>
+</div>
+<h4>Listar todas as tags</h4>
+<p align="justify">
+   get http://demo.ckan.org/api/3/action/tag_list<br>
+</p>
+<div class="code-block">
+   <code>result{ <br>
+   0:	"projetos-de-pesquisa" <br>
+   1:	"administração"<br>
+   2:	"educacao"<br>
+   3:	"linguagens-de-programação"<br>
+   4:  "banco-de-dados"<br>
+   5:	"horários"<br>
+   ...}<br></code>
+</div>
+<p>return type: list of dictionaries</p>
+<h3>/package_search</h3>
+<p align="justify">
+   Retorna os metadados dados e metadados de um conjunto de dados (pacote) e seus recursos.<br>
+   Parametros:
+</p>
+<ul>
+   <li><em>id(string)</em>O id ou nome do conjunto de dados
+   </li>
+   <li><em>use_default_schema (bool)</em>usar esquema de pacote padrão em vez de
+      um esquema personalizado definido com um plug-in IDatasetForm (padrão: False)
+   </li>
+   <li><em>include_tracking (bool)</em>adicionar informações de rastreamento ao conjunto
+      de dados e recursos (padrão: False)
+   </li>
+</ul>
+<h4>Mosrar o pacoe e seus recursos</h4>
+<p align="justify">
+   get http://demo.ckan.org/api/3/action/group_list<br>
+</p>
+<div class="code-block">
+   <code>result{ <br>
+   0:	"acessibilidade" <br>
+   1:	"administração"<br>
+   2:	"educacao"<br>
+   3:	"meio-ambiente"<br>
+   4: "mobilidade"<br>
+   5:	"saude"<br>
+   ...}<br></code>
+</div>
+<p>return type: dictionary</p>
+<h3>/resource_show</h3>
+<p align="justify">
+   Retorna os metadados de um conjunto de um recurso.<br>
+   Parametros:
+</p>
+<ul>
+   <li><em>id(string)</em>O id do recurso
+   </li>
+   <li><em>include_tracking (bool)</em>adicionar informações de rastreamento ao conjunto
+      de dados e recursos (padrão: False)
+   </li>
+</ul>
+<p>return type: dictionary</p>
+<h3>/group_show</h3>
+<p align="justify">
+   Retorna os detalhes de um grupo<br>
+   Parametros:
+</p>
+<ul>
+   <li><em>id(string)</em>O id ou nome do grupo
+   </li>
+   <li><em>include_datasets (bool)</em>incluir uma lista truncada dos conjuntos de
+      dados do grupo (opcional, padrão: False)
+   </li>
+   <li><em>include_dataset_count (bool)</em>incluir a contagem completa do pacote (opcional, padrão: True)
+   </li>
+   <li><em>include_extras (bool)</em>incluir os campos extras do grupo (opcional, padrão: True)
+   </li>
+   <li><em>include_users (bool)</em>incluir os usuários do grupo (opcional, padrão: false)
+   </li>
+   <li><em>include_groups (bool) </em>incluir os subgrupos do grupo (opcional, padrão: True)
+   </li>
+   <li><em>include_tags (bool)</em>incluir as tags do grupo (opcional, padrão: True)
+   </li>
+   <li><em>include_followers (bool)</em>incluir o número de seguidores do grupo (opcional, padrão: True)
+   </li>
+</ul>
+<p>return type: dictionary</p>
+<h3>/organization_show</h3>
+<p align="justify">
+   Retorna os detalhes de uma organização<br>
+   Parametros:
+</p>
+<ul>
+   <li><em>id(string)</em>O id ou nome da organização
+   </li>
+   <li><em>include_datasets (bool)</em>incluir uma lista truncada dos conjuntos de
+      dados do grupo (opcional, padrão: False)
+   </li>
+   <li><em>include_dataset_count (bool)</em>incluir a contagem completa do pacote (opcional, padrão: True)
+   </li>
+   <li><em>include_extras (bool)</em>incluir os campos extras da organização (opcional, padrão: True)
+   </li>
+   <li><em>include_users (bool)</em>incluir os usuários da organização (opcional, padrão: false)
+   </li>
+   <li><em>include_groups (bool) </em>incluir os subgrupos da organização (opcional, padrão: True)
+   </li>
+   <li><em>include_tags (bool)</em>incluir as tags da organização (opcional, padrão: True)
+   </li>
+   <li><em>include_followers (bool)</em>incluir o número de seguidores da organização (opcional, padrão: True)
+   </li>
+</ul>
+<p>return type: dictionary</p>
+{% endtrans %}
