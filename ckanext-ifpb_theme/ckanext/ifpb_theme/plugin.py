@@ -61,9 +61,9 @@ class Ifpb_ThemePlugin(plugins.SingletonPlugin):
                       'delete',
                   ])))
         with SubMapper(map, controller='ckanext.ifpb_theme.controllers.apidoc:ApiController') as m:
-            m.connect('/apidoc', action='show')
-            m.connect('/developer', action='developer')
-            m.connect('/turma', action='turma')
+            m.connect('api_show','/apidoc', action='show')
+            m.connect('developer_show','/developer', action='developer')
+            m.connect('turma_show','/turma', action='turma')
         return map
 
     # Definir autorization

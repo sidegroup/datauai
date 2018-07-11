@@ -46,7 +46,7 @@ def app_schema():
 # Aplicativos
 # ============================================================
 class AppController(BaseController):
-	
+
 	def show(self):
 		context = {'model': ifpb_model}
 		data_dict = {'order_by': 'name'}
@@ -68,7 +68,7 @@ class AppController(BaseController):
 
 		if context['save'] and not data:
 			return self._save_new(context)
-		
+
 		data = data or {}
 		errors = errors or {}
 		error_summary = error_summary or {}

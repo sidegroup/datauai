@@ -13,145 +13,57 @@
   API URL: http://127.0.0.1:5000/api/3/action/datastore_search?resource_id=f0768119-dcd2-4867-a814-0d54b5c31485
 </p>
 <ul>
-  <li><em>order_by(string)</em>o campo para ordenar a lista deve ser 'name' ou 'packages'
-     (opcional)</li>
-  <li><em>limit(int)</em>se fornecido, a lista de grupos será dividida em páginas de no máximo
-     um limite de grupos por página e somente uma página será retornada por vez (opcional)</li>
-  <li><em>groups (list of strings)</em>uma lista de nomes dos grupos a serem retornados, se
-     forem fornecidos apenas grupos cujos nomes estejam nesta lista, serão retornados (opcional)</li>
+  <li><em>resource_id (string)</em>id ou nome do recurso a ser pesquisado
+     (obrigatorio)</li>
+  <li><em>filtros (dicionário)</em> - condições de correspondência para selecionar, por exemplo, "key1": "a", "key2": "b"} (opcional)</li>
+  <li><em>q (string ou dicionário)</em> - consulta de texto completo. Se for uma string, ela pesquisará em todos os campos em cada linha. Se for
+    um dicionário como {"key1": "a", "key2": "b"}, ele pesquisará em cada campo específico (opcional)</li>
+  <li><em>distinct (bool)</em> - retorna apenas linhas distintas (opcional, padrão: false)</li>
+  <li><em>limit (int)</em>número máximo de linhas a retornar (opcional, padrão: 100)</li>
+  <li><em>campos (lista ou seqüência separada por vírgulas)</em> - campos a serem retornados (opcional, padrão: todos os campos na ordem original)</li>
+  <li><em>sort (string)</em> - nomes de campos separados por vírgula com ordenação, por exemplo: “fieldname1, fieldname2 desc”</li>
 </ul>
-<h4>Listar todos os grupos</h4>
+<h4>Listar todas as turmas</h4>
 <p align="justify">
   get http://demo.ckan.org/api/3/action/group_list<br>
 </p>
 <code>fields:{<br>
-0:{type:	"int" <br>
-   id:	"_id"}<br>
+0:{type:	"int"
+   <div class="codes">id:	"_id"}</div>
 1:{type: numeric,<br>
-  id:  "TURMA"}<br>
+  <div class="codes">id:  "TURMA"}<br></div>
 2:{type:	"text",<br>
-  id: "DISCIPLINA"}<br>
+  <div class="codes">id: "DISCIPLINA"}<br></div>
 3:{type: "text",<br>
-  id: ID-LATTES-PROFESSOR}<br>
+  <div class="codes">id: ID-LATTES-PROFESSOR}</div><br>
 
-<code>result{<br>
-0:	"123" <br>
-1:	"1234"<br>
-2:	"16848646846"<br>
-3:	"1qaz"<br>
-4: "20171211"<br>
-5:	"20171220"<br>
-6:	"2017test-source"<br>
-7:	"24601"<br>
-8:	"4354"<br>
-9:	"aaaa"<br>
-10:	"aafcgroup"}<br></code>
+<code>records{<br>
+0:<br>
+	_id: 1<br>
+  TURMA: 20121<br>
+  DISCIPLINA:	"Linguagens de Script"<br>
+  ID-LATTES-PROFESSOR: "K4241290Z6" <br>
+1:<br>
+	_id: 2<br>
+  TURMA: 20121<br>
+  DISCIPLINA:	"Linguagens de Marcação"<br>
+  ID-LATTES-PROFESSOR: "K4241290Z6" <br>
+2:<br>
+	_id: 3<br>
+  TURMA: 20122<br>
+  DISCIPLINA:	"Linguagens de Marcação"<br>
+  ID-LATTES-PROFESSOR: "K4241290Z6" <br>
+3:<br>
+	_id: 4<br>
+  TURMA: 20122<br>
+  DISCIPLINA:	"Linguagens de Script"<br>
+  ID-LATTES-PROFESSOR: "K4241290Z6" <br>
+4:<br>
+	_id: 5<br>
+  TURMA: 20131<br>
+  DISCIPLINA:	"Programação Para Web I"<br>
+  ID-LATTES-PROFESSOR: "K4241290Z6" <br>
+...}</code>
 <p>return type: list of strings</p>
-<h3>/organization_list</h3>
-<p align="justify">
-  Retorna uma lista dos nomes dos grupos do site.<br>
-  Parametros:
-</p>
-<ul>
-  <li><em>order_by(string)</em>o campo para ordenar a lista deve ser 'name' ou 'packages'
-     (opcional)</li>
-  <li><em>limit(int)</em>se fornecido, a lista de grupos será dividida em páginas de no máximo
-     um limite de grupos por página e somente uma página será retornada por vez (opcional)</li>
-  <li><em>organizations (list of strings)</em>uma lista de nomes das organizações a serem retornados, se
-     forem fornecidos apenas organizações cujos nomes estejam nesta lista, serão retornados (opcional)</li>
-</ul>
-<p>return type: list of strings</p>
-<h3>/tag_list</h3>
-<p align="justify">
-  Retorna uma lista das tags do portal<br>
-  Parametros:
-</p>
-<ul>
-  <li><em>query(string)</em>Uma consulta de nome de marca para pesquisar, se forem
-     fornecidas apenas as tags cujos nomes contenham essa string serão retornadas (opcional)
-  </li>
-  <li><em>vocabulary_id (string)</em>O id ou o nome de um vocabulário, se somente as tags que pertencem a
-    este vocabulário forem retornadas (opcional)
-  </li>
-  <li><em>all_fields (bool)</em>Retornar dicionários de tags completos em vez de apenas nomes
-    (opcional, padrão: False)</li>
-</ul>
-<p>return type: list of dictionaries</p>
-<h3>/package_show</h3>
-<p align="justify">
-  Retorna os metadados de um conjunto de dados (pacote) e seus recursos.<br>
-  Parametros:
-</p>
-<ul>
-  <li><em>id(string)</em>O id ou nome do conjunto de dados
-  </li>
-  <li><em>use_default_schema (bool)</em>usar esquema de pacote padrão em vez de
-     um esquema personalizado definido com um plug-in IDatasetForm (padrão: False)
-  </li>
-  <li><em>include_tracking (bool)</em>adicionar informações de rastreamento ao conjunto
-     de dados e recursos (padrão: False)</li>
-</ul>
-<p>return type: dictionary</p>
-<h3>/resource_show</h3>
-<p align="justify">
-  Retorna os metadados de um conjunto de um recurso.<br>
-  Parametros:
-</p>
-<ul>
-  <li><em>id(string)</em>O id do recurso
-  </li>
-  <li><em>include_tracking (bool)</em>adicionar informações de rastreamento ao conjunto
-     de dados e recursos (padrão: False)</li>
-</ul>
-<p>return type: dictionary</p>
-<h3>/group_show</h3>
-<p align="justify">
-  Retorna os detalhes de um grupo<br>
-  Parametros:
-</p>
-<ul>
-  <li><em>id(string)</em>O id ou nome do grupo
-  </li>
-  <li><em>include_datasets (bool)</em>incluir uma lista truncada dos conjuntos de
-    dados do grupo (opcional, padrão: False)</li>
-  <li><em>include_dataset_count (bool)</em>incluir a contagem completa do pacote (opcional, padrão: True)
-  </li>
-  <li><em>include_extras (bool)</em>incluir os campos extras do grupo (opcional, padrão: True)
-  </li>
-  <li><em>include_users (bool)</em>incluir os usuários do grupo (opcional, padrão: false)
-  </li>
-  <li><em>include_groups (bool) </em>incluir os subgrupos do grupo (opcional, padrão: True)
-  </li>
-  <li><em>include_tags (bool)</em>incluir as tags do grupo (opcional, padrão: True)
-  </li>
-  <li><em>include_followers (bool)</em>incluir o número de seguidores do grupo (opcional, padrão: True)
-  </li>
-</ul>
-<p>return type: dictionary</p>
-<h3>/organization_show</h3>
-<p align="justify">
-  Retorna os detalhes de uma organização<br>
-  Parametros:
-</p>
-<ul>
-  <li><em>id(string)</em>O id ou nome da organização
-  </li>
-  <li><em>include_datasets (bool)</em>incluir uma lista truncada dos conjuntos de
-    dados do grupo (opcional, padrão: False)</li>
-  <li><em>include_dataset_count (bool)</em>incluir a contagem completa do pacote (opcional, padrão: True)
-  </li>
-  <li><em>include_extras (bool)</em>incluir os campos extras da organização (opcional, padrão: True)
-  </li>
-  <li><em>include_users (bool)</em>incluir os usuários da organização (opcional, padrão: false)
-  </li>
-  <li><em>include_groups (bool) </em>incluir os subgrupos da organização (opcional, padrão: True)
-  </li>
-  <li><em>include_tags (bool)</em>incluir as tags da organização (opcional, padrão: True)
-  </li>
-  <li><em>include_followers (bool)</em>incluir o número de seguidores da organização (opcional, padrão: True)
-  </li>
-</ul>
-<p>return type: dictionary</p>
-
 
 {% endtrans %}

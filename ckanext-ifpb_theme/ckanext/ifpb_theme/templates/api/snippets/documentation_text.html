@@ -83,7 +83,7 @@
       (opcional, padrão: False)
    </li>
 </ul>
-</div>
+
 <h4>Listar todas as tags</h4>
 <p align="justify">
    get http://demo.ckan.org/api/3/action/tag_list<br>
@@ -114,7 +114,7 @@
       de dados e recursos (padrão: False)
    </li>
 </ul>
-<h4>Mosrar o pacoe e seus recursos</h4>
+<h4>Mosrar o pacote e seus recursos</h4>
 <p align="justify">
    get http://demo.ckan.org/api/3/action/group_list<br>
 </p>
@@ -141,6 +141,20 @@
       de dados e recursos (padrão: False)
    </li>
 </ul>
+<h4>Mosrar o pacote e seus recursos</h4>
+<p align="justify">
+   get http://demo.ckan.org/api/3/action/group_list<br>
+</p>
+<div class="code-block">
+   <code>result{ <br>
+   0:	"acessibilidade" <br>
+   1:	"administração"<br>
+   2:	"educacao"<br>
+   3:	"meio-ambiente"<br>
+   4: "mobilidade"<br>
+   5:	"saude"<br>
+   ...}<br></code>
+</div>
 <p>return type: dictionary</p>
 <h3>/group_show</h3>
 <p align="justify">
@@ -166,6 +180,20 @@
    <li><em>include_followers (bool)</em>incluir o número de seguidores do grupo (opcional, padrão: True)
    </li>
 </ul>
+<h4>Mosrar o pacote e seus recursos</h4>
+<p align="justify">
+   get http://demo.ckan.org/api/3/action/group_list<br>
+</p>
+<div class="code-block">
+   <code>result{ <br>
+   0:	"acessibilidade" <br>
+   1:	"administração"<br>
+   2:	"educacao"<br>
+   3:	"meio-ambiente"<br>
+   4: "mobilidade"<br>
+   5:	"saude"<br>
+   ...}<br></code>
+</div>
 <p>return type: dictionary</p>
 <h3>/organization_show</h3>
 <p align="justify">
@@ -191,5 +219,19 @@
    <li><em>include_followers (bool)</em>incluir o número de seguidores da organização (opcional, padrão: True)
    </li>
 </ul>
+<h4>Mosrar o pacote e seus recursos</h4>
+<p align="justify">
+   get http://demo.ckan.org/api/3/action/group_list<br>
+</p>
+<div class="code-block">
+   <code>result{ <br>
+   0:	"acessibilidade" <br>
+   1:	"administração"<br>
+   2:	"educacao"<br>
+   3:	"meio-ambiente"<br>
+   4: "mobilidade"<br>
+   5:	"saude"<br>
+   ...}<br></code>
+</div>
 <p>return type: dictionary</p>
 {% endtrans %}
