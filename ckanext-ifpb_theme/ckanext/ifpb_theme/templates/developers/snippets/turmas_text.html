@@ -1,0 +1,69 @@
+{% trans %}
+<p align="justify">
+  Possibilita obtenção de dados sobre o dataset de turmas
+</p>
+<ul>
+  <li><em>sucess:</em> Retorna um boolean <em>true</em> ou <em>false</em></li>
+  <li><em>result:</em> Os dados resultantes da requisição</li>
+  <li><em>help:</em> Uma string de documentação para a função que você chamou
+</li>
+</ul>
+<h3>/Rotas</h3>
+<p align="justify">
+  API URL: http://127.0.0.1:5000/api/3/action/datastore_search?resource_id=f0768119-dcd2-4867-a814-0d54b5c31485
+</p>
+<ul>
+  <li><em>resource_id (string)</em>id ou nome do recurso a ser pesquisado
+     (obrigatorio)</li>
+  <li><em>filtros (dicionário)</em> - condições de correspondência para selecionar, por exemplo, "key1": "a", "key2": "b"} (opcional)</li>
+  <li><em>q (string ou dicionário)</em> - consulta de texto completo. Se for uma string, ela pesquisará em todos os campos em cada linha. Se for
+    um dicionário como {"key1": "a", "key2": "b"}, ele pesquisará em cada campo específico (opcional)</li>
+  <li><em>distinct (bool)</em> - retorna apenas linhas distintas (opcional, padrão: false)</li>
+  <li><em>limit (int)</em>número máximo de linhas a retornar (opcional, padrão: 100)</li>
+  <li><em>campos (lista ou seqüência separada por vírgulas)</em> - campos a serem retornados (opcional, padrão: todos os campos na ordem original)</li>
+  <li><em>sort (string)</em> - nomes de campos separados por vírgula com ordenação, por exemplo: “fieldname1, fieldname2 desc”</li>
+</ul>
+<h4>Listar todas as turmas</h4>
+<p align="justify">
+  get http://demo.ckan.org/api/3/action/group_list<br>
+</p>
+<code>fields:{<br>
+0:{type:	"int"
+   <div class="codes">id:	"_id"}</div>
+1:{type: numeric,<br>
+  <div class="codes">id:  "TURMA"}<br></div>
+2:{type:	"text",<br>
+  <div class="codes">id: "DISCIPLINA"}<br></div>
+3:{type: "text",<br>
+  <div class="codes">id: ID-LATTES-PROFESSOR}</div><br>
+
+<code>records{<br>
+0:<br>
+	_id: 1<br>
+  TURMA: 20121<br>
+  DISCIPLINA:	"Linguagens de Script"<br>
+  ID-LATTES-PROFESSOR: "K4241290Z6" <br>
+1:<br>
+	_id: 2<br>
+  TURMA: 20121<br>
+  DISCIPLINA:	"Linguagens de Marcação"<br>
+  ID-LATTES-PROFESSOR: "K4241290Z6" <br>
+2:<br>
+	_id: 3<br>
+  TURMA: 20122<br>
+  DISCIPLINA:	"Linguagens de Marcação"<br>
+  ID-LATTES-PROFESSOR: "K4241290Z6" <br>
+3:<br>
+	_id: 4<br>
+  TURMA: 20122<br>
+  DISCIPLINA:	"Linguagens de Script"<br>
+  ID-LATTES-PROFESSOR: "K4241290Z6" <br>
+4:<br>
+	_id: 5<br>
+  TURMA: 20131<br>
+  DISCIPLINA:	"Programação Para Web I"<br>
+  ID-LATTES-PROFESSOR: "K4241290Z6" <br>
+...}</code>
+<p>return type: list of strings</p>
+
+{% endtrans %}

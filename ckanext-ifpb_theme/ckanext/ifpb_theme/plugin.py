@@ -32,7 +32,7 @@ class Ifpb_ThemePlugin(plugins.SingletonPlugin):
     def get_helpers(self):
         '''Register all functions
         '''
-        
+
         # Template helper function names should begin with the name of the
         # extension they belong to, to avoid clashing with functions from
         # other extensions.
@@ -42,7 +42,7 @@ class Ifpb_ThemePlugin(plugins.SingletonPlugin):
         }
 
     # Mapeamento das URLs
-    # =======================================================                
+    # =======================================================
     def before_map(self, map):
         return map
 
@@ -60,12 +60,14 @@ class Ifpb_ThemePlugin(plugins.SingletonPlugin):
                       'edit',
                       'delete',
                   ])))
-
-                    
+        with SubMapper(map, controller='ckanext.ifpb_theme.controllers.apidoc:ApiController') as m:
+            m.connect('api_show','/apidoc', action='show')
+            m.connect('developer_show','/developer', action='developer')
+            m.connect('turma_show','/turma', action='turma')
         return map
 
     # Definir autorization
-    # =======================================================                
+    # =======================================================
     def get_auth_functions(self):
         return {
             'app_create': auth_create.app_create,

@@ -26,13 +26,14 @@
     <ul class="nav nav-pills">
       {% block header_site_navigation_tabs %}
         {#Menu#}
-        {{ 
+        {{
           h.build_nav_main(
             ('search', _('Dados')),
             ('group_index', _('Grupos')),
             ('app_show', _('Aplicativos')),
-            ('about', _('Sobre'))
-          ) 
+            ('about', _('Sobre')),
+            ('about', _('Developers')),
+          )
         }}
       {% endblock %}
     </ul>
