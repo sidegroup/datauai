@@ -38,9 +38,43 @@ body {
 
 .media-item {
 	text-align: center;
+	border: 1px solid #003237;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 
 ._media-grid{
 	padding-left: 70px;
+	margin-bottom: 100px;
+}
+
+
+a.tag:hover {
+	background-color: #003237;
+}
+
+.datauai_stats {
+	color: #003237;
+}
+
+.media-item:hover {
+  border-color: #003237;
+  -webkit-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.dataset-heading a{
+	color: #003237;
+}
+
+.btn-theme {
+	background-color: #003237;
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#003237),to(#015058));
 }
 
